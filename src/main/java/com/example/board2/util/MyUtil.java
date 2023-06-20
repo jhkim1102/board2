@@ -50,8 +50,7 @@ public class MyUtil {
 		}
 		
 		//2. 그냥 페이지이동(6,7,8,9,10) 버튼 만들기
-		
-		
+				
 		page = currentPageSetup + 1; //page는  1 6 11 16...
 		
 		while(page <= totalPage && page <= (currentPageSetup + numPerBlock)) {
@@ -62,7 +61,7 @@ public class MyUtil {
 				
 			}else {
 				//현재 내가 선택한 페이지가 아니면
-				sb.append("<a href=\"" + listUrl + "pageNum" + page + "\">" + page + "</a>&nbsp;");
+				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">" + page + "</a>&nbsp;");
 				//<a href ="list?pageNum=7">7</a>&nbsp;
 				
 			}
@@ -71,7 +70,14 @@ public class MyUtil {
 		}
 		//3. 다음▶ 버튼 만들기
 		
+		if(totalPage - currentPageSetup > numPerBlock) {
+			sb.append("<a href=\"" + listUrl + "pageNum="
+					+ currentPageSetup + "\">다음▶</a>&nbsp;");
+		}
+		
 		//4.버튼 합쳐서 문자열로 리턴
+		System.out.println(sb.toString());
+		
 		return sb.toString();
 	}
 	
